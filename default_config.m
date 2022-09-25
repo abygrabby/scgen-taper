@@ -1,0 +1,16 @@
+c = 299792458*1e9/1e12;         % speed of light [nm/ps]
+n = 2^14;                       % number of grid points
+lmin = 267;                     % min wavelength (nm) for computation, do not go below 267
+lmax = 1600;                    % max wavelength (nm) for computation, do not go above 1600
+wmin = 2*pi*c/lmax;             % min frequency [2*pi*THz]
+wmax = 2*pi*c/lmin;             % max frequency [2*pi*THz]
+w0 = (wmin + wmax)/2;           % mean frequency [2*pi*THz]
+dT = 2*pi/(wmax-wmin);          % time resolution (ps)
+T = [-n/2:n/2-1]*dT;            % time vector
+dT = T(2)-T(1);                 % grid parameter
+V = 2*pi*(-n/2:n/2-1)'/(n*dT);  % frequency grid
+W = V + w0;                     % for shock W is true freq
+xmin = 400;                     % min wavelength (nm) for plotting, do not go below lmin
+xmax = 1400;                    % max wavelength (nm) for plotting, do not go above lmax
+tmin = -400;                    % min delay (fs) for plotting
+tmax = 1200;                    % max delay (fs) for plotting
